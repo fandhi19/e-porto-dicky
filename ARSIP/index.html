@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <title>E-Portofolio PPG | Agasta Pratama Nugraha</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="navbar" id="navbar">
+      <div class="nav-left">
+        <img src="logo.png" alt="Logo PPG" class="logo-img" />
+        <span class="brand-name"
+          >E-Portofolio <span class="highlight">PPG</span></span
+        >
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+
+      <nav class="nav-right" id="nav-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="profile.html" class="nav-link">Profil</a>
+
+        <div class="dropdown">
+          <button class="dropbtn">
+            Artefak <i class="fa-solid fa-chevron-down chevron"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="observasi.html"
+              ><i class="fa-solid fa-search"></i> Observasi</a
+            >
+            <a href="modulajar.html"
+              ><i class="fa-solid fa-book"></i> Modul Ajar</a
+            >
+            <a href="lkpd.html"><i class="fa-solid fa-file-pen"></i> LKPD</a>
+            <a href="dokumentasi.html"
+              ><i class="fa-solid fa-camera-retro"></i> Dokumentasi</a
+            >
+          </div>
+        </div>
+
+        <a href="refleksi.html" class="nav-link">Refleksi</a>
+        <a href="modelguru.html" class="nav-link">Model Guru</a>
+      </nav>
+    </header>
+
+    <main class="home-main">
+      <div class="mesh-bg">
+        <div class="mesh-blob blob-blue"></div>
+        <div class="mesh-blob blob-purple"></div>
+        <div class="mesh-blob blob-cyan"></div>
+      </div>
+
+      <section class="hero-modern">
+        <div class="container hero-container">
+          <div class="hero-text-content">
+            <div class="badge-tech fade-in-up" style="animation-delay: 0.1s">
+              <i class="fa-solid fa-graduation-cap"></i> PPG Prajabatan
+              Informatika UNY
+            </div>
+            <h1 class="fade-in-up" style="animation-delay: 0.3s">
+              Membangun <br />
+              Karakter Melalui <br />
+              <span class="text-gradient-animated">Teknologi & Inovasi</span>
+            </h1>
+            <p class="fade-in-up" style="animation-delay: 0.5s">
+              Selamat datang di portal E-Portofolio PPG Prajabatan Informatika.
+              Halaman ini merupakan ruang dokumentasi digital yang merangkum
+              seluruh proses transformasi, perancangan pembelajaran inovatif,
+              serta refleksi kritis selama pelaksanaan Praktik Pengalaman
+              Lapangan (PPL) di sekolah mitra.
+            </p>
+
+            <div class="hero-buttons fade-in-up" style="animation-delay: 0.7s">
+              <a href="#dokumen" class="btn-glow">
+                <span>Eksplorasi Artefak</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="profile.html" class="btn-outline-tech">
+                <i class="fa-solid fa-user"></i> Tentang Saya
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual fade-in-up" style="animation-delay: 0.5s">
+            <div class="modern-portrait-container">
+              <div class="portrait-glow"></div>
+              <div class="portrait-frame"></div>
+              <div class="portrait-img-box">
+                <img
+                  src="profile.jpeg"
+                  alt="Agasta Pratama Nugraha"
+                  class="portrait-img"
+                />
+              </div>
+              <div class="badge-clean badge-info">
+                <div class="icon-circle bg-blue-grad">
+                  <i class="fa-solid fa-code"></i>
+                </div>
+                <span class="badge-text">Informatika</span>
+              </div>
+              <div class="badge-clean badge-uny">
+                <div class="icon-circle bg-purple-grad">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="badge-text">PPG Prajabatan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="scrolling-banner fade-in-up" style="animation-delay: 0.8s">
+        <div class="scrolling-text">
+          <span>✨ Pembelajaran Berdiferensiasi</span>
+          <span>🚀 Integrasi TPACK</span>
+          <span>💻 Computational Thinking</span>
+          <span>🎨 Inovasi Media Pembelajaran</span>
+          <span>🌐 Literasi Digital</span>
+          <span>✨ Pembelajaran Berdiferensiasi</span>
+          <span>🚀 Integrasi TPACK</span>
+          <span>💻 Computational Thinking</span>
+          <span>🎨 Inovasi Media Pembelajaran</span>
+          <span>🌐 Literasi Digital</span>
+        </div>
+      </div>
+
+      <section class="stats-wow reveal">
+        <div class="container">
+          <div class="stats-grid-wow">
+            <div class="stat-card-wow">
+              <div class="stat-glow"></div>
+              <div class="stat-icon-wow">📖</div>
+              <div class="stat-info-wow">
+                <h4>Program</h4>
+                <p>PPG Prajabatan 2026</p>
+              </div>
+            </div>
+            <div class="stat-card-wow active-stat">
+              <div class="stat-glow"></div>
+              <div class="stat-icon-wow">🏫</div>
+              <div class="stat-info-wow">
+                <h4>LPTK</h4>
+                <p>Universitas Negeri Yogyakarta</p>
+              </div>
+            </div>
+            <div class="stat-card-wow">
+              <div class="stat-glow"></div>
+              <div class="stat-icon-wow">📍</div>
+              <div class="stat-info-wow">
+                <h4>Sekolah PPL</h4>
+                <p>SMA Negeri 4 Yogyakarta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dokumen" class="zigzag-section">
+        <div class="container">
+          <div class="section-title-modern reveal">
+            <h2>
+              Ruang Karya<span class="text-gradient"> & Artefak PPL</span>
+            </h2>
+            <p>
+              Dokumentasi terstruktur yang mencakup hasil observasi, perangkat
+              pembelajaran, dan evaluasi praktik mengajar selama masa pendidikan
+              profesi.
+            </p>
+          </div>
+
+          <div class="zigzag-row reveal">
+            <div class="zigzag-content">
+              <div class="zz-number">01</div>
+              <h3>Laporan Hasil Observasi</h3>
+              <p>
+                Analisis mendalam mengenai lingkungan belajar, budaya sekolah,
+                serta karakteristik peserta didik di sekolah mitra.
+              </p>
+              <a href="observasi.html" class="btn-text">
+                Baca Laporan <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="zigzag-visual">
+              <div class="visual-wrapper float-visual-1">
+                <div class="card-decor decor-1"></div>
+                <div class="visual-card">
+                  <div class="card-face card-front">
+                    <div class="card-glow-bg"></div>
+                    <i class="fa-solid fa-clipboard-check big-icon"></i>
+                  </div>
+                  <div class="card-face card-back">
+                    <i class="fa-solid fa-folder-open big-icon-light"></i>
+                    <span class="back-text" style="text-align: center"
+                      >Observasi lingkungan sekolah dan kelas SMA N 4
+                      Yogyakarta</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="zigzag-row reverse reveal">
+            <div class="zigzag-content">
+              <div class="zz-number">02</div>
+              <h3>Perangkat Ajar</h3>
+              <p>
+                Penyusunan Modul Ajar (RPP) berbasis PjBL yang mengintegrasikan
+                unsur TPACK dan profil pelajar pancasila.
+              </p>
+              <a href="modulajar.html" class="btn-text">
+                Lihat Modul <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="zigzag-visual">
+              <div class="visual-wrapper float-visual-2">
+                <div class="card-decor decor-2"></div>
+                <div class="visual-card">
+                  <div class="card-face card-front card-accent">
+                    <div class="card-glow-bg bg-accent-glow"></div>
+                    <i class="fa-solid fa-file-signature big-icon-light"></i>
+                  </div>
+                  <div class="card-face card-back back-accent">
+                    <i class="fa-solid fa-book-open big-icon-light"></i>
+                    <span class="back-text" style="text-align: center"
+                      >Rancangan Modul Ajar PPL 1 Terbimbing</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="zigzag-row reveal">
+            <div class="zigzag-content">
+              <div class="zz-number">03</div>
+              <h3>Instrumen LKPD</h3>
+              <p>
+                Lembar kerja interaktif untuk mendukung proses kolaborasi siswa
+                dalam proyek produksi konten digital.
+              </p>
+              <a href="lkpd.html" class="btn-text">
+                Buka LKPD <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="zigzag-visual">
+              <div class="visual-wrapper float-visual-3">
+                <div class="card-decor decor-3"></div>
+                <div class="visual-card">
+                  <div class="card-face card-front">
+                    <div class="card-glow-bg"></div>
+                    <i class="fa-solid fa-list-check big-icon"></i>
+                  </div>
+                  <div class="card-face card-back">
+                    <i class="fa-solid fa-laptop-code big-icon-light"></i>
+                    <span class="back-text" style="text-align: center"
+                      >Instrumen Penilaian Hasil Karya Murid</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="expanding-gallery-section">
+        <div class="container">
+          <div class="section-title-modern text-center reveal">
+            <h2>Galeri <span class="text-gradient">Kegiatan PPG</span></h2>
+            <p>
+              Representasi visual dari implementasi praktik mengajar dan
+              interaksi akademis di lingkungan sekolah.
+            </p>
+          </div>
+
+          <div class="expanding-gallery reveal">
+            <div
+              class="panel active"
+              style="background-image: url(&quot;IMG/kelas.jpg&quot;)"
+            >
+              <div class="panel-content">
+                <div class="panel-icon">
+                  <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <h3>Kegiatan Kelas</h3>
+                <p>Implementasi Modul Ajar</p>
+              </div>
+            </div>
+
+            <div
+              class="panel"
+              style="background-image: url(&quot;IMG/bimbingan.jpg&quot;)"
+            >
+              <div class="panel-content">
+                <div class="panel-icon">
+                  <i class="fa-solid fa-users-rays"></i>
+                </div>
+                <h3>Bimbingan Siswa</h3>
+                <p>Pendampingan E-LKPD</p>
+              </div>
+            </div>
+
+            <div
+              class="panel"
+              style="background-image: url(&quot;IMG/lab.jpg&quot;)"
+            >
+              <div class="panel-content">
+                <div class="panel-icon">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h3>Pemanfaatan TPACK</h3>
+                <p>Praktik Lab Komputer</p>
+              </div>
+            </div>
+
+            <div
+              class="panel"
+              style="background-image: url(&quot;IMG/diskusi.jpg&quot;)"
+            >
+              <div class="panel-content">
+                <div class="panel-icon">
+                  <i class="fa-solid fa-people-group"></i>
+                </div>
+                <h3>Diskusi Kolaboratif</h3>
+                <p>Pembelajaran Kelompok</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeri-footer reveal">
+            <a href="dokumentasi.html" class="btn-outline-tech">
+              Lihat Semua Dokumentasi <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="epic-footer">
+      <div class="footer-orb f-orb-1"></div>
+      <div class="footer-orb f-orb-2"></div>
+
+      <div class="footer-container">
+        <div class="footer-cta reveal">
+          <h2>Menuju Pendidik<span>Profesional & Inovatif</span></h2>
+          <p>
+            Mendedikasikan ilmu pengetahuan untuk memajukan kualitas pendidikan
+            Informatika di Indonesia.
+          </p>
+        </div>
+
+        <div class="footer-grid reveal">
+          <div class="footer-brand">
+            <h3 class="footer-logo">E-Portofolio <span>PPG</span></h3>
+            <p class="footer-desc">
+              Portal resmi dokumentasi artefak dan refleksi Program Pendidikan
+              Profesi Guru (PPG) Prajabatan bidang studi Informatika di
+              Universitas Negeri Yogyakarta.
+            </p>
+            <div class="social-neon">
+              <a
+                href="https://www.instagram.com/gas_taa?igsh=Z2g0MWRydm4zNzM4"
+                class="neon-btn"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/agasta-pratama-nugraha?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                class="neon-btn"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Artefak Utama</h4>
+            <ul>
+              <li>
+                <a href="observasi.html"
+                  ><i class="fa-solid fa-arrow-right"></i> Observasi PPL</a
+                >
+              </li>
+              <li>
+                <a href="modulajar.html"
+                  ><i class="fa-solid fa-arrow-right"></i> Modul Ajar</a
+                >
+              </li>
+              <li>
+                <a href="lkpd.html"
+                  ><i class="fa-solid fa-arrow-right"></i> E-LKPD</a
+                >
+              </li>
+              <li>
+                <a href="refleksi.html"
+                  ><i class="fa-solid fa-arrow-right"></i> Refleksi</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>LPTK Kami</h4>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> Universitas Negeri
+              Yogyakarta
+            </p>
+            <div class="map-glass">
+              <iframe
+                src="https://maps.google.com/maps?q=Universitas%20Negeri%20Yogyakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-copyright">
+          <p>
+            © 2026 E-Portofolio PPG Prajabatan Informatika | Agasta Pratama
+            Nugraha
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 1. Floating Navbar Logic
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // 2. Hamburger Menu
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("nav-menu");
+      hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+
+      // 3. Script Expanding Gallery (Fix Hover & Active Mulus)
+      const panels = document.querySelectorAll(".panel");
+      panels.forEach((panel) => {
+        // Menggunakan mouseenter untuk desktop agar sangat responsif
+        panel.addEventListener("mouseenter", () => {
+          removeActiveClasses();
+          panel.classList.add("active");
+        });
+        // Tetap menggunakan click untuk pengguna Mobile / Layar Sentuh
+        panel.addEventListener("click", () => {
+          removeActiveClasses();
+          panel.classList.add("active");
+        });
+      });
+      function removeActiveClasses() {
+        panels.forEach((panel) => panel.classList.remove("active"));
+      }
+
+      // 4. Scroll Reveal Animation Logic
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 100;
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+      window.addEventListener("scroll", reveal);
+      reveal();
+    </script>
+  </body>
+</html>

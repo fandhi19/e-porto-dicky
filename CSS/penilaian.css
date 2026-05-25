@@ -1,0 +1,930 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM VARIABLES & RESET
+   ========================================================================== */
+:root {
+  --bg-dark-1: #040812;
+  --bg-dark-2: #0b1221;
+  --bg-card: #121b33;
+  --accent-color: #00e5ff;
+  --accent-glow: rgba(0, 229, 255, 0.4);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Poppins", sans-serif;
+  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark-1);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-accent {
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* --- Background Grid & Laser Effects --- */
+.cyber-grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.012) 1px, transparent 1px);
+  background-size: 45px 45px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glowing-laser-orb {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(var(--accent-glow), transparent 60%);
+  bottom: -200px;
+  right: -200px;
+  opacity: 0.2;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   2. NAVBAR STYLING
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(4, 8, 18, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--accent-color);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(0, 229, 255, 0.1);
+  padding: 15px 0;
+}
+
+/* Untuk memastikan logo dan menu kekal dalam lebar yang terkawal */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.univ-logo-img {
+  width: 45px;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.brand-name .highlight {
+  color: var(--accent-color);
+  text-shadow: 0 0 12px var(--accent-glow);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+  padding: 5px 0;
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-main);
+}
+
+/* Kesan hover neon bergaris bawah */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* --------------------------------------------------
+   SISTEM DROPDOWN
+   -------------------------------------------------- */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown:hover .dropbtn {
+  color: var(--text-main);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--bg-dark-2);
+  min-width: 200px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  z-index: 99;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  text-transform: none;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+}
+
+.dropdown-content a i {
+  color: var(--accent-color);
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(0, 229, 255, 0.1);
+  padding-left: 25px;
+  color: var(--text-main);
+}
+
+.dropdown-content a::after {
+  display: none;
+}
+
+/* --------------------------------------------------
+   ELEMEN CHECKBOX & HAMBURGER (Disembunyikan di Desktop)
+   -------------------------------------------------- */
+.nav-toggle {
+  display: none;
+}
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+}
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-main);
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   NAVBAR RESPONSIVE (Modul Mobile Menu mengggunakan CSS Hack)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--bg-dark-1);
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 25px;
+    transition: var(--transition-smooth);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+  }
+
+  /* Logika CSS Checkbox Hack untuk membuka menu */
+  #nav-toggle:checked ~ .nav-links {
+    left: 0;
+  }
+
+  /* Animasi Ikon Hamburger bertukar silang (X) */
+  #nav-toggle:checked ~ .hamburger .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+    background-color: var(--accent-color);
+  }
+  #nav-toggle:checked ~ .hamburger .bar:nth-child(2) {
+    opacity: 0;
+  }
+  #nav-toggle:checked ~ .hamburger .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    background-color: var(--accent-color);
+  }
+
+  /* Dropdown Behaviour pada Mod Mobile */
+  .dropdown:active .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-content {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    padding: 0;
+    display: none;
+  }
+
+  .dropdown:hover .dropdown-content,
+  #nav-toggle:checked ~ .nav-links .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    justify-content: center;
+    padding: 10px 0;
+  }
+}
+
+/* ==========================================================================
+   3. HERO SECTION & BADGES
+   ========================================================================== */
+.artefak-main {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-artefak {
+  text-align: center;
+}
+
+.badge-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.live-pulse-cyan {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-color);
+  animation: pulse 1.2s infinite alternate;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 46px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.hud-line-center {
+  width: 80px;
+  height: 4px;
+  background: var(--accent-color);
+  margin: 0 auto 25px;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.hero-desc {
+  color: var(--text-muted);
+  font-size: 15px;
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   4. SECTION HEADERS & SEPARATORS
+   ========================================================================== */
+.document-section {
+  padding: 40px 0;
+}
+
+.section-title-box {
+  margin-bottom: 30px;
+}
+
+.section-title-box h2 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title-box p {
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.cyber-separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 229, 255, 0.3),
+    transparent
+  );
+  margin: 60px 0 20px;
+}
+
+/* ==========================================================================
+   5. TACTICAL IDENTITY BAR (Lampiran 8)
+   ========================================================================== */
+.doc-identity-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background: var(--bg-dark-2);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.identity-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.id-icon-box {
+  width: 45px;
+  height: 45px;
+  background: rgba(0, 229, 255, 0.08);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 18px;
+}
+
+.identity-item label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.identity-item h4 {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #fff;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   6. PDF VIEWER & TABS SYSTEM
+   ========================================================================== */
+.pdf-tabs-container {
+  background: #091121;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.tab-buttons {
+  display: flex;
+  background: #040812;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition-smooth);
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.tab-btn:hover {
+  background: rgba(0, 229, 255, 0.04);
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: var(--bg-dark-2);
+  color: var(--accent-color);
+  box-shadow: inset 0 3px 0 var(--accent-color);
+}
+
+.tab-content {
+  display: none;
+  padding: 30px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.pdf-wrapper {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  background: var(--bg-dark-1);
+}
+
+.pdf-hud-header {
+  display: flex;
+  justify-content: space-between;
+  background: #040812;
+  padding: 10px 18px;
+  font-size: 10px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-blink {
+  color: var(--accent-color);
+  animation: pulse 0.8s infinite alternate;
+}
+
+.pdf-wrapper iframe {
+  width: 100%;
+  height: 600px; /* Default height */
+  border: none;
+  background: #fff;
+}
+
+/* Action Buttons */
+.doc-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.btn-glow {
+  background: var(--accent-color);
+  color: var(--bg-dark-1);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 15px var(--accent-glow);
+  border: 1px solid var(--accent-color);
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--accent-color);
+}
+
+.btn-outline-sport {
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition-smooth);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline-sport:hover {
+  border-color: var(--accent-color);
+  background: rgba(0, 229, 255, 0.05);
+  color: var(--accent-color);
+}
+
+/* ==========================================================================
+   7. HUD SCORE SUMMARY (Khusus Tab Evaluasi)
+   ========================================================================== */
+.eval-summary-box {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: var(--bg-dark-2);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-left: 4px solid var(--accent-color);
+  padding: 25px 30px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: tabFade 0.5s ease-in-out forwards;
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding-right: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.score-number {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--accent-color);
+  line-height: 1;
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.score-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+.feedback-text {
+  flex-grow: 1;
+}
+
+.feedback-text h4 {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.feedback-text p {
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.7;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   8. FOOTER STYLING (FIXED CONSISTENCY)
+   ========================================================================== */
+.footer {
+  background-color: #020409;
+  border-top: 1px solid rgba(0, 229, 255, 0.1);
+  padding: 80px 0 30px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.footer-about p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-dark-2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+.social-icons a:hover {
+  background: var(--accent-color);
+  color: var(--bg-dark-1);
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+}
+
+.footer-links h3,
+.footer-contact h3 {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  position: relative;
+}
+.footer-links h3::after,
+.footer-contact h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.footer-links ul {
+  list-style: none;
+}
+.footer-links ul li {
+  margin-bottom: 12px;
+}
+.footer-links ul li a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: var(--transition-smooth);
+}
+.footer-links ul li a:hover {
+  color: var(--accent-color);
+  padding-left: 5px;
+  text-shadow: 0 0 5px var(--accent-glow);
+}
+
+.footer-contact p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.footer-contact p i {
+  color: var(--accent-color);
+  margin-top: 4px;
+}
+.maps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-smooth);
+}
+.maps-link:hover {
+  background: var(--accent-color);
+  box-shadow: 0 5px 15px var(--accent-glow);
+  border-color: var(--accent-color);
+  color: var(--bg-dark-1);
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 30px;
+}
+.footer-bottom p {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+/* ==========================================================================
+   9. ANIMATIONS ENGINE
+   ========================================================================== */
+@keyframes pulse {
+  from {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes tabFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal,
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active,
+.fade-in-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   10. MEDIA QUERIES (RESPONSIVE ENGINE)
+   ========================================================================== */
+@media screen and (max-width: 992px) {
+  .doc-identity-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  .hero-title {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Section Elements */
+  .section-title-box h2 {
+    font-size: 18px;
+  }
+
+  .eval-summary-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+  }
+  .score-display {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0;
+    padding-bottom: 20px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  /* Footer CTA Mobile Fix */
+  .floating-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    transform: translateY(-70px);
+    margin-bottom: -30px;
+  }
+
+  .tab-btn {
+    padding: 14px 10px;
+    font-size: 11px;
+  }
+
+  .pdf-wrapper iframe {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .doc-identity-bar {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 28px;
+  }
+  .tab-buttons {
+    flex-direction: column;
+  }
+  .tab-btn {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .doc-actions {
+    flex-direction: column;
+  }
+  .btn-glow,
+  .btn-outline-sport {
+    justify-content: center;
+  }
+}
